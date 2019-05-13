@@ -30,28 +30,13 @@ class LeNet_teachehr(nn.Module):
             nn.ReLU(),
             nn.Conv2d(500, 10, 1, padding=0),
         )
-        # self.fc1 = nn.Sequential(
-        #         #     nn.Linear(16 * 5 * 5, 120),
-        #         #     #nn.BatchNorm2d(120),
-        #         #     nn.ReLU()
-        #         # )
-        #         # self.fc2 = nn.Sequential(
-        #         #     nn.Linear(120, 84),
-        #         #     #nn.BatchNorm2d(84),
-        #         #     nn.ReLU()
-        #         # )
-        #self.fc3 = nn.Linear(84, 10)
+
 
     # 定义前向传播过程，输入为x
     def forward(self, x):
         x = self.conv1(x)
-
         x = self.conv2(x)
-        # # nn.Linear()的输入输出都是维度为一的值，所以要把多维度的tensor展平成一维
         x = x.view(x.size()[0], -1) #view类似于numpy的reshape,把一张图展平成D个特征量
-        # x = self.fc1(x)
-        # x = self.fc2(x)
-        # x = self.fc3(x)
         return x
 
 
